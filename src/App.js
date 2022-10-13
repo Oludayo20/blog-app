@@ -1,4 +1,6 @@
 import "./App.css";
+import "./style.scss";
+import "./media-query.css";
 import Home from "./pages/Home";
 import Detail from "./pages/Detail";
 import AddEditBlog from "./pages/AddEditBlog";
@@ -7,10 +9,12 @@ import NotFound from "./pages/NotFound";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Header from "./components/Header";
 
 function App() {
   return (
     <div className="App">
+      <Header />
       <ToastContainer />
       <Routes>
         <Route path="/" element={<Home />} />
