@@ -5,7 +5,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 // import "@pathofdev/react-tag-input/build/index.css";
 import { TagsInput } from "react-tag-input-component";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
-import { auth } from "../firebase";
+import { useNavigate } from "react-router-dom";
 
 const initialState = {
   title: "",
@@ -30,6 +30,10 @@ const AddEditBlog = ({ user }) => {
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(null);
   const [selectTag, setSelectTag] = useState([]);
+
+  const navigate = useNavigate();
+
+  console.log("user123", user.displayName);
 
   const { title, tags, category, trending, description } = form;
 
@@ -89,7 +93,7 @@ const AddEditBlog = ({ user }) => {
     e.preventDefault();
     if (category && tags && title && file && description && trending) {
       try {
-        await addDoc(collection(db, "blog"), {
+        await addDoc(collection(db, "blogs"), {
           ...form,
           timestamp: serverTimestamp(),
           author: user.displayName,
@@ -99,6 +103,8 @@ const AddEditBlog = ({ user }) => {
         console.log(err);
       }
     }
+
+    navigate("/");
   };
 
   console.log(form);

@@ -50,9 +50,27 @@ function App() {
       <ToastContainer position="top-center" />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/create" element={<AddEditBlog user={user} />} />
-        <Route path="/update/:id" element={<AddEditBlog />} />
+        <Route path="/detail/:id" element={<Detail setActive={setActive} />} />
+        <Route
+          path="/create"
+          element={
+            user?.displayName ? (
+              <AddEditBlog user={user} />
+            ) : (
+              <Navigate to="/auth" />
+            )
+          }
+        />
+        <Route
+          path="/update/:id"
+          element={
+            user?.displayName ? (
+              <AddEditBlog user={user} />
+            ) : (
+              <Navigate to="/auth" />
+            )
+          }
+        />
         <Route path="/about" element={<About />} />
         <Route path="/auth" element={<Auth setActive={setActive} />} />
         <Route path="/+" element={<NotFound />} />
