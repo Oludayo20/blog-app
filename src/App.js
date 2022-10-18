@@ -49,7 +49,7 @@ function App() {
       />
       <ToastContainer position="top-center" />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home setActive={setActive} user={user} />} />
         <Route path="/detail/:id" element={<Detail setActive={setActive} />} />
         <Route
           path="/create"
@@ -65,7 +65,7 @@ function App() {
           path="/update/:id"
           element={
             user?.displayName ? (
-              <AddEditBlog user={user} />
+              <AddEditBlog user={user} setActive={setActive} />
             ) : (
               <Navigate to="/auth" />
             )
