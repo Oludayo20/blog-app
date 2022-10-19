@@ -34,7 +34,7 @@ function BlogSection({ blogs, user, handleDelete }) {
             <Link to={`/detail/${item.id}`}>
               <button className="btn btn-read">Read More</button>
             </Link>
-            {user?.uid && item.userId === user.uid && (
+            {userId && item.userId === userId && (
               <div style={{ float: "right" }}>
                 <FontAwesome
                   name="trash"

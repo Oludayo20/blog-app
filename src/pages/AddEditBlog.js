@@ -37,14 +37,12 @@ const AddEditBlog = ({ user, setActive }) => {
   const [form, setForm] = useState(initialState);
   const [file, setFile] = useState(null);
   const [progress, setProgress] = useState(null);
-  const [selectTag, setSelectTag] = useState([]);
+  const [selectTag] = useState([]);
 
   // Editing blog
   const { id } = useParams();
 
   const navigate = useNavigate();
-
-  console.log("user123", user.displayName);
 
   const { title, tags, category, trending, description } = form;
 
@@ -88,6 +86,7 @@ const AddEditBlog = ({ user, setActive }) => {
   // Editing blog
   useEffect(() => {
     id && getBlogDetail();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [id]);
 
   const getBlogDetail = async () => {
@@ -148,8 +147,6 @@ const AddEditBlog = ({ user, setActive }) => {
     }
     navigate("/");
   };
-
-  console.log(form);
 
   return (
     <div className="container-fluid mb-4">

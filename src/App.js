@@ -72,8 +72,11 @@ function App() {
           }
         />
         <Route path="/about" element={<About />} />
-        <Route path="/auth" element={<Auth setActive={setActive} />} />
-        <Route path="/+" element={<NotFound />} />
+        <Route
+          path="/auth"
+          element={<Auth setActive={setActive} setUser={setUser} />}
+        />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );
