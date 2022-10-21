@@ -15,6 +15,7 @@ import { toast } from "react-toastify";
 import Tags from "../components/Tags";
 import MostPopular from "../components/MostPopular";
 import Trending from "../components/Trending";
+import Footer from "../components/Footer";
 
 const Home = ({ setActive, user }) => {
   const [loading, setLoading] = useState(true);

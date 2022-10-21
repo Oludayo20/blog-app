@@ -2,6 +2,7 @@ import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import MostPopular from "../components/MostPopular";
+import RelatedBlog from "../components/RelatedBlog";
 import Tags from "../components/Tags";
 import { db } from "../firebase";
 
@@ -38,6 +39,8 @@ const Detail = ({ setActive }) => {
     setActive(null);
   };
 
+  console.log(blog?.category);
+
   return (
     <div className="single">
       <div
@@ -59,7 +62,9 @@ const Detail = ({ setActive }) => {
                 {blog?.timestamp.toDate().toDateString()}
               </span>
               <p className="text-start">{blog?.description}</p>
-              <div>{/* <MostPopular blogs={blogs} /> */}</div>
+              <div>
+                <RelatedBlog blog={blog?.category} />
+              </div>
             </div>
             <div className="col-md-3">
               <Tags tags={tags} />

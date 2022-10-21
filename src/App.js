@@ -14,6 +14,7 @@ import Header from "./components/Header";
 import Auth from "./pages/Auth";
 import { auth } from "./firebase";
 import { signOut } from "firebase/auth";
+import Footer from "./components/Footer";
 
 function App() {
   const [active, setActive] = useState("home");
@@ -78,6 +79,7 @@ function App() {
         />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <Footer />
     </div>
   );
 }
